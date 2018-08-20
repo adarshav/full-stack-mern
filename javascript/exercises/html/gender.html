@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viep wport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gender</title>
+</head>
+<body>
+    <h2>Gender</h2>
+
+    <label for="name">Name:</label><input type="text" id="name" name="name">
+    <button id="nameBtn">Click me!</button>
+    <div id="app"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var nameHandle = document.getElementById('name');
+        var btnHandle = document.getElementById('nameBtn');
+        var appHandle = document.getElementById('app');
+        btnHandle.addEventListener('click', function() {
+            var userInput = nameHandle.value;
+            console.log(userInput);
+            axios.get(`https://gender-api.com/get?name=${userInput}&key=pRPLCejozFwCHFbVCR`)
+            .then((response) => {
+                appHandle.innerHTML = `your gender is ${response.data.gender}`
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }, false);
+    </script>
+</body>
+</html>

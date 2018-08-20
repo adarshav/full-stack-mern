@@ -1,0 +1,131 @@
+/*
+You are given two strings S1 and S2. You need to find weights of both strings and compare them. The weight of a string can be obtained by adding individual weights of the characters that make the string. The weight of individual characters are the position on which they occur in the English alphabets table; for eg, a has weight 1, z has weight 26.
+Output:
+Print 1 if the weight of the first string is greater. Print 2 if the weight of the second string is greater. Print equal if the weights are equal.
+Example:
+Input 
+1.
+batman
+superman
+2.
+manbat
+batman
+Output: 
+2
+equal 
+*/
+class Weight {
+    constructor(str1, str2) {
+        this.str1 = str1;
+        this.str2 = str2;
+    }
+    find() {
+        let load = [{
+            name:'a',
+            weight:1
+        },
+        {
+            name:'b',
+            weight:2
+        },
+        {
+            name:'c',
+            weight:3
+        },
+        {
+            name:'d',
+            weight:4
+        },
+        {
+            name:'e',
+            weight:5
+        },
+        {
+            name:'f',
+            weight:6
+        },
+        {
+            name:'g',
+            weight:7
+        },
+        {
+            name:'h',
+            weight:8
+        },
+        {
+            name:'i',
+            weight:9
+        },
+        {
+            name:'j',
+            weight:10
+        },
+        {
+            name:'k',
+            weight:11
+        },
+        {
+            name:'l',
+            weight:12
+        },
+        {
+            name:'m',
+            weight:13
+        },
+        {
+            name:'n',
+            weight:14
+        },
+        {
+            name:'o',
+            weight:15
+        },
+        {
+            name:'p',
+            weight:16
+        },
+        {
+            name:'q',
+            weight:17
+        },
+        {
+            name:'r',
+            weight:18
+        },
+        {
+            name:'s',
+            weight:19
+        },
+        {
+            name:'t',
+            weight:20
+        },
+        {
+            name:'u',
+            weight:21
+        },
+        {
+            name:'v',
+            weight:22
+        },
+        {
+            name:'w',
+            weight:23
+        },
+        {
+            name:'x',
+            weight:24
+        },
+        {
+            name:'y',
+            weight:25
+        },
+        {
+            name:'z',
+            weight:26
+        }];
+        let s1Count = 0;
+        let s2Count = 0;
+        s1
+    }
+}

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>String</title>
+    </head>
+    <body>
+        <h2 id='name'>dct academy</h2>
+        <button id='nameBtn'>Click me !</button>
+        <h2 id='name1'>BANGALORE</h2>
+        <button id='nameBtn1'>Click on me ! Lowercase</button> 
+        <script>
+        var nameHandle = document.getElementById('name');
+        console.log(nameHandle.innerHTML);
+        var nameBtnHandle = document.getElementById('nameBtn');
+        console.log(nameBtnHandle.innerHTML);
+        nameBtnHandle.addEventListener('click', function() {
+            var presentText = nameHandle.innerHTML;
+            nameHandle.innerHTML = nameHandle.innerHTML.toUpperCase();
+        }, false);
+        //for lowercase
+        var nameHandle1 = document.getElementById('name1');
+        var nameBtnHandle1 = document.getElementById('nameBtn1');
+        console.log(name1.innerHTML.toLowerCase());
+        nameBtnHandle1.addEventListener('click', function() {
+            nameHandle1.innerHTML = nameHandle1.innerHTML.toLowerCase(); 
+        }, false);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown</title>
+</head>
+<body>
+    <label >languages</label>
+    <select name="languages" id="languages">
+        <option value="">Select here</option>
+        <option value="js">Javascript</option>
+        <option value="py">Python</option>
+        <option value="rb">Ruby</option>
+    </select>
+    <select name="courses" id="courses"></select>
+    <script>
+        var courses = [{
+            name:'MERN',
+            languages:'js'
+        },
+        {
+            name:'MEAN',
+            languages:'js'
+        },
+        {
+            name:'React',
+            languages:'rb'
+        },
+        {
+            name:'Python + Django',
+            languages:'py'
+        }];
+        var languagesHandle = document.getElementById('languages');
+        var coursesHandle = document.getElementById('courses');
+        
+        languagesHandle.addEventListener('change', function() {
+            coursesHandle.innerHTML = '';
+        courses.forEach(function(course) {
+            
+            if(course.languages === languagesHandle.value) {
+                var option1 = document.createElement('option');
+                var optionText = document.createTextNode(course.name);
+                option1.appendChild(optionText);
+                coursesHandle.appendChild(option1);
+                console.log(coursesHandle);                                                         
+            }
+        });
+            
+        }, false);
+    </script>
+</body>
+</html>

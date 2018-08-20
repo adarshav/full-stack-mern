@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tasks-array</title>
+</head>
+<body>
+    <h2>working with DOM with task as an array</h2>
+    <h2>My Tasks</h2>
+    <ul id='myTasks'></ul>
+    <script>
+        var tasks = ['watching a movie', 'going for a walk', 'bring the groceries'];
+        var ulHandle = document.getElementById('myTasks');
+        tasks.forEach(function(task) {
+            var liFirst = document.createElement('li');
+            console.log(liFirst);
+            var liFirstText = document.createTextNode(task);
+            console.log(liFirstText);
+            liFirst.appendChild(liFirstText);
+            ulHandle.appendChild(liFirst);
+        });
+        
+    </script>
+</body>
+</html>

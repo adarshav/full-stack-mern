@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gender</title>
+</head>
+<body>
+    <h2>We will tell your gender</h2>
+    <label>Enter your  name</label> <input type="text" id='name'/><br>
+    <button id='btn'> Click here</button>
+    <p id='output'></p>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var nameHandle = document.getElementById('name');
+        //console.log(userInput);
+        var btnHandle = document.getElementById('btn');
+        var outputHandle = document.getElementById('output');
+        btnHandle.addEventListener('click', function() {
+            var userInput = nameHandle.value;
+            if(userInput === '') {
+                outputHandle.innerHTML = 'name cannot be blank';
+            } else {
+                var url = `https://gender-api.com/get?name=${userInput}&key=pRPLCejozFwCHFbVCR`;
+
+                axios.get(url)
+                .then(function(response) {
+                    outputHandle.innerHTML = `your gender is ${response.data.gender}`;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+            }
+        }, false);
+         
+    </script>
+</body>
+</html>

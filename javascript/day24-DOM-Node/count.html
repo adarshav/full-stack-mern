@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>count</title>
+</head>
+<body>
+    <h2>Count</h2>
+    <h3 id='result'>0</h3>
+    <button id='upBtn'>Up</button> <button id='downBtn'>Down</button>
+    <script>
+        var count = 0;
+        var resultHandle = document.getElementById('result');
+        var upBtnHandle = document.getElementById('upBtn');
+        var downBtnHandle = document.getElementById('downBtn');
+        upBtnHandle.addEventListener('click', function() {
+            resultHandle.innerHTML = ++count;
+        }, false);
+        downBtnHandle.addEventListener('click', function() {
+            if(count > 0) {
+                // count--;
+                resultHandle.innerHTML = --count;   
+            }
+        }, false);
+    </script>
+</body>
+</html>

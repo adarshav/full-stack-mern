@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form</title>
+</head>
+<body>
+    <h2>LogIn Form</h2>
+    <form id="loginForm"action="./">
+        <label for="usernameId">UserName</label>
+        <input type="text" name="username" id="usernameId"><span id="usernameError"></span>
+        <br>
+        <label for="passwordId">Password</label>
+        <input type="password" name="password" id="passwordId"><span id="passwordError"></span><label name="show" value="show" id="show"> show </label>
+        <br>
+        <input type="submit" value="LogIn">
+    </form>
+
+    <script>
+        var formHandle = document.getElementById('loginForm');
+
+        var usernameHandle = document.getElementById('usernameId');
+        var usernameErrorHandle = document.getElementById('usernameError');
+
+        var passwordHandle = document.getElementById('passwordId');    
+        var passwordErrorHandle = document.getElementById('passwordError');
+        
+        var showHandle = document.querySelector('#show');
+
+        var hasErrors = {
+            username:true,
+            password:true
+        }
+        
+        function validateUsername() {
+            if(usernameHandle.value === '') {
+                usernameErrorHandle.innerHTML = 'username cannot be empty';
+                hasErrors.username = true;
+            } else{
+                usernameErrorHandle.innerHTML = '';
+                hasErrors.username = false;
+            }
+        }
+
+        function validatePassword() {
+            if(passwordHandle.value === '') {
+                console.log('it is at password');
+                passwordErrorHandle.innerHTML = 'password cannot be empty';
+                hasErrors.password = true;
+            } else if(passwordHandle.value.length < 8 || passwordHandle.value.length > 120) {
+                passwordErrorHandle.innerHTML = 'password should be between 8 and 120 characters';
+                hasErrors.password = true;
+            } else {
+                passwordErrorHandle.innerHTML = '';
+                hasErrors.password = false;
+            }
+        }
+
+        showHandle.addEventListener('mouseover', function() {
+            passwordHandle.setAttribute('type', 'text');
+        }, false);
+        
+        showHandle.addEventListener('mouseout', function() {
+            passwordHandle.setAttribute('type', 'password');
+        }, false);
+
+        formHandle.addEventListener('submit', function(e) {
+            validateUsername();
+            validatePassword();
+
+            if(Object.values(hasErrors).includes(true)) {
+                e.preventDefault();
+            }
+        }, false);
+    </script>
+</body>
+</html>

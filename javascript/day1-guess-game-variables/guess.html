@@ -1,0 +1,38 @@
+<!-- 'prompt' is a method can be used to input & it should be enclosed in single quotes and double quotes
+target_number - snake case(used in python)
+targetNumber - camelCase (most preferred in javascript)
+TargetNumber - pascalCase -->
+<html>
+    <head>
+        <title>
+            guess game
+        </title>
+    </head>
+    <body>
+        <script>
+           var name = prompt('Enter ur name');
+           console.log('Welcome to the Guess game' + ' ' + name);
+           var targetNumber = Math.ceil(Math.random() * 100);
+           console.log(targetNumber);
+           var maxGuess = 2;
+           var playerGuess = 0;
+            var guessCount =2; 
+           for(var i = 0;i < maxGuess;i++) {
+            var guess = prompt('guess my number');
+            guessCount = guessCount - 1;
+            console.log(`you are remaining with ${guessCount} moves`)//this is advanced it is introduced in ECMA script 2015
+            if(guess > targetNumber) {
+                console.log('your guess was high');
+            } else if(guess < targetNumber) {
+                console.log('OOPS !! your guess was very low');
+            } else {
+                console.log('you guessed my number ' + name);
+                break;
+            }
+           } 
+           if(i == maxGuess) {
+                console.log('sorry you didn\'t get my number, my number was' + targetNumber);
+           }
+        </script>
+    </body>
+</html>

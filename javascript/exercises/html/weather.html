@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather</title>
+</head>
+<body>
+    <h2>Using Open-Weather API</h2>
+    <select name="city" id="city">
+        <option value="">Select</option>
+        <option value="mysore">Mysore</option>
+        <option value="bangalore">Bangalore</option>
+        <option value="hubli">Hubli</option>
+        <option value="mangalore">Mangalore</option>
+    </select>
+    <div id="app"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var cityHandle = document.getElementById('city');
+        var appHandle = document.getElementById('app');
+        cityHandle.addEventListener('change', function() {
+            var userInput = cityHandle.value;
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid=3ae18949940ecdb295e65ef1a2186a0f&units=metric`)
+            .then((response) => {
+                appHandle.innerHTML = `${userInput}'s temperature is ${response.data.main.temp}`
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }, false);
+    </script>
+</body>
+</html>

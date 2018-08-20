@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>String</title>
+    </head>
+    <body>
+        <h2 id='heading'>dct academy</h2>
+        <button id='headingBtn'>Click me to uppercase!!</button>
+        <h2 id='headingNataka'>KARNATAKA</h2>
+        <button id='headingNatakaBtn'>Click me to lowercase!!</button>
+
+        <h1 id='india'>make in india</h1>
+        <button id='indiaBtn'>Click here to camelCase!!</button>
+        <script>
+            var nameHandle = document.getElementById('heading');
+            console.log(nameHandle.innerHTML);
+            var nameBtnHandle = document.getElementById('headingBtn');
+            console.log(headingBtn.innerHTML);
+            nameBtnHandle.addEventListener('click', function() {
+                nameHandle.innerHTML = nameHandle.innerHTML.toUpperCase();
+            }, false);
+            //to lowercase
+            var nameHandle1 = document.getElementById('headingNataka');
+            var nameBtnHandle1 = document.getElementById('headingNatakaBtn');
+            nameBtnHandle1.addEventListener('click', function() {
+                nameHandle1.innerHTML = nameHandle1.innerHTML.toLowerCase()
+            }, false);
+            // to camelCase
+            var changeIndia = document.getElementById('india');
+            var changeIndiaBtn = document.getElementById('indiaBtn');
+            changeIndiaBtn.addEventListener('click', function() {
+                var saveSplit = changeIndia.innerHTML.split(' ');
+                console.log(saveSplit);
+                var array = [];
+                for(var i = 0;i < saveSplit.length;i++) {
+                    array.push(saveSplit[i].charAt(0).toUpperCase() + saveSplit[i].slice(1));
+                }
+                changeIndia.innerHTML = array.join(' ');
+                //console.log(saveSplit.charAt(0).toUpperCase() + saveSplit.slice(1));
+            }, false);
+        </script>
+    </body>
+</html>

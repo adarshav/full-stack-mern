@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DropDown</title>
+</head>
+<body>
+    <h2>Selecting languages</h2>
+    <label>Country:</label>
+    <select name="languages" id="languages">
+        <option value="">Select</option>
+        <option value="india">India</option>
+        <option value="srilanka">SriLanka</option>
+        <option value="china">China</option>
+    </select><br>
+    <label for="state">State</label>
+    <select name="state" id="state"></select>
+    <script>
+        var states = [{
+            country:'india',
+            state:'karnataka'
+        },
+        {
+            country:'india',
+            state:'Andhra Pradesh'
+        },
+        {
+            country:'india',
+            state:'Madhya Pradesh'
+        },
+        {
+            country:'india',
+            state:'Gujarat'
+        },
+        {
+            country:'srilanka',
+            state:'Ceylon'
+        },
+        {
+            country:'srilanka',
+            state:'Colombo'
+        }];
+
+        var languageHandle = document.getElementById('languages');
+        var stateHandle = document.getElementById('state');
+        languageHandle.addEventListener('change', function() {
+            stateHandle.innerHTML = '';
+
+            states.forEach((state) => {
+            if(state.country === languageHandle.value) {
+                var option = document.createElement('option');
+                var optionText = document.createTextNode(state.state);
+                option.appendChild(optionText);
+                stateHandle.appendChild(option);
+            }
+        });
+        }, false);
+        
+    </script>
+</body>
+</html>

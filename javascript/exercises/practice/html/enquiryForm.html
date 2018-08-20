@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EnquiryForm</title>
+</head>
+<body>
+    <h2>Enquiry Form</h2>
+    <form action="./dashboard.html" id="enquiryForm">
+        <label for="nameId">Name</label> <input type="text" name="name" id="nameId" /><span id="nameError"></span>
+        <br>
+        <!-- Mobile -->
+        <label for="mob">Mobile</label> <input type="text" name="mobile" id="mob"/> <span id="mobileError"></span>
+        <br>
+        <!-- Email -->
+        <label for="emailId">Email</label> <input type="text" name="email" id="emailId"> <span id="emailError"></span>
+        <br>
+        <!-- Gender -->
+        <label>Gender</label> <input type="radio"name="gender" id="male"><label for="male">Male</label>  <input type="radio" name="gender" id="female"><label for="female">Female</label><span id="genderError"></span>
+        <br>
+        <!-- Country -->
+        <label for="">Country</label> 
+        <select name="country" id="country">
+            <option value="">Select</option>
+            <option value="india">India</option>
+            <option value="bangladesh">Bangladesh</option>
+            <option value="srilanka">SriLanka</option>
+        </select><span id="countryError"></span>
+        <br>
+        <!-- State -->
+        <label>State</label>
+        <select name="state" id="state">State</select>
+        <br>
+        <input type="submit" name="Submit" value="submit">
+
+    </form>
+
+    <script>
+        var formHandle = document.getElementById('enquiryForm');
+
+        var nameHandle = document.getElementById('nameId');
+        var nameErrorHandle = document.getElementById('nameError');
+        var mobileHandle = document.getElementById('mob');
+        var mobileErrorHandle = document.getElementById('mobileError');
+        var emailHandle = document.getElementById('emailId');
+        var emailErrorHandle = document.getElementById('emailError');
+        var countryHandle = document.getElementById('country');
+        var stateHandle = document.getElementById('state');
+        //checking for errors
+        var hasErrors = {
+            name:true,
+            mobile:true,
+            email:true
+        };
+
+        var states =[{
+            state:'karnataka',
+            country:'india'
+        },
+        {
+            state:'Andhra Pradesh',
+            country:'india'
+        },
+        {
+            state:'Jammu & Kashmir',
+            country:'india'
+        },
+        {
+            state:'Manipur',
+            country:'india'
+        },
+        {
+            state:'New Delhi',
+            country:'india'
+        },
+        {
+            state:'Ceylon',
+            country:'srilanka'
+        },
+        {
+            state:'Dhaka',
+            country:'bangladesh'
+        },
+        {
+            state:'Chittagong',
+            country:'bangladesh'
+        }
+        ];
+
+
+        function validateName() {
+            if(nameHandle.value === '') {
+                nameErrorHandle.innerHTML = 'name cannot be blank';
+                hasErrors.name = true;
+            } else {
+                nameErrorHandle.innerHTML = '';
+                hasErrors.name = false;
+            }
+        }
+
+        function validateMobile() {
+            if(mobileHandle.value === '') {
+                console.log(mobileHandle.value);
+                mobileErrorHandle.innerHTML = '*required'
+                hasErrors.mobile = true;
+            } else if(mobileHandle.value.length !== 10) {
+                mobileErrorHandle.innerHTML = 'should be 10 digits';
+                hasErrors.mobile = true;
+            } else {
+                mobileErrorHandle.innerHTML = '';
+                hasErrors.mobile = false;
+            }
+        }
+
+        function validateEmail() {
+            if(emailHandle.value === '') {
+                emailErrorHandle.innerHTML = 'email cannot be blank';
+                hasErrors.email = true;
+            } else {
+                emailErrorHandle.innerHTML = '';
+                hasErrors.email = false;
+            }
+        }
+        //validation of country and state
+        countryHandle.addEventListener('change', function() {
+            stateHandle.innerHTML = '';
+            states.forEach(function(state) {
+                if(state.country === countryHandle.value) {
+                    var option = document.createElement('option');
+                    var optionText = document.createTextNode(state.state);
+                    option.appendChild(optionText);
+                    stateHandle.appendChild(option);
+                }
+            });
+        }, false);
+
+        formHandle.addEventListener('submit', function(e) {
+            validateName();
+            validateMobile();
+            validateEmail();
+            nameHandle.value = '';
+            mobileHandle.value = '';
+            emailHandle.value = '';
+
+            if(Object.values(hasErrors).includes(true)) {
+                e.preventDefault();
+            }
+        }, false);
+    </script>
+</body>
+</html>

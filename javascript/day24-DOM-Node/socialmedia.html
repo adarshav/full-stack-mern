@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>My Social media links </h2>
+    <ul id='myLinks'>
+    
+    </ul>
+    <script>
+         var links = [
+            {
+                title:'website',
+                url:'http://www.dctacademy.com'
+            },
+            {
+                title:'facebook',
+                url:'http://facebook.com'
+            },
+            {
+                title:'twitter',
+                url:'http://twitter.com'
+            }
+
+        ];
+        var myLinksHandle = document.getElementById('myLinks');
+            for(var i = 0;i < links.length;i++){
+                var li = document.createElement('li');
+                var a = document.createElement('a');
+                a.setAttribute('href', links[i].url);   
+                var text = document.createTextNode(links[i].title);
+                a.appendChild(text);
+                li.appendChild(a);
+                myLinksHandle.appendChild(li);
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>
+            Guess Game
+        </title>
+    </head>
+    <body>
+        <script>
+        var name = prompt('Enter ur name');
+        console.log('Welcome to the GuessGame ' + name);
+        var targetNumber = Math.ceil(Math.random() * 100) + 1;
+        console.log(targetNumber);
+        var guessCount = 3;
+        var playerGuess = 0;
+        var maxGuess = 3;
+        for(var i = 0;i < maxGuess;i++) {
+            var guess = prompt('Guess my number');
+            if(guess > targetNumber) {
+                console.log(' OOPS !!! your guess was high');
+            } else if(guess < targetNumber) {
+                console.log('OOPS!! your guess was low');
+            } else {
+                console.log(`GoodJob, ${name}  you guessed my number with remaining  ${playerGuess} moves `);
+                break;
+            }
+            playerGuess = playerGuess + 1;
+            guessCount = guessCount - 1;
+            console.log(`you are remaining with ${guessCount} moves`);
+        } 
+        if(i === maxGuess) {
+            console.log(`Sorry!! you didn\'t get my number my number was ${targetNumber}`);
+        }   
+        </script>
+    </body>
+</html>

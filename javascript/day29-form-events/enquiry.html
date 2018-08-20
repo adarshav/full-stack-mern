@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enquiry Form</title>
+</head>
+<body>
+    <h2>Enquiry Form</h2>
+    <form id="enquiryForm" action="./index.html">
+        <!-- for attribute in label should be same as id in the input tag[it highlights the textbox when the respective label is clicked] -->
+        <label for="nameId">Name :</label>
+        <input type="text" name="name" id="nameId"/><span id="nameError"></span>
+        <br><br>
+
+        <label for="mob">Mobile :</label>
+        <input type="text" name="mobile" id="mob"><span id="mobileError"></span>
+        <br><br>
+
+        <label for="emailId">Email :</label>
+        <input type="text" name="email" id="emailId"/>
+        <br><br>
+
+        <label for="gender">Gender</label>
+        <input type="radio" name="gender" value="male" id="male"><label for="male">Male</label>
+        <input type="radio" name="gender"  value="female" id="female"><label for="female">Female</label>
+        <br>
+        
+        <label>Languages</label>
+        <select name="languages" id="languages">
+            <option value="">Select</option>
+            <option value="js">Javascript</option>
+            <option value="rb">Ruby</option>
+            <option value="py">Python</option>
+        </select>
+        <br><br>
+
+        <label>Courses</label>
+        <select name="courses" id="courses">
+            <option value="">Select</option>
+            <option value="mern">MERN</option>
+            <option value="react">React</option>
+            <option value="node">Node</option>
+            <option value="django">Python + Django</option>
+            <option value="ror">Ruby On Rails</option>
+        </select>
+        <br>
+
+        <label>Preference</label>
+        <input type="radio" name="preference" value="weekday" id="wd"><label for="wd">WeekDay</label>
+        <input type="radio" name="preference" value="weekend" id="we"><label for="we">WeekEnd</label>
+        <br>
+
+        <label>Experience</label>
+        <input type="number" name="experience" min="0" max="15">
+        <br>
+        <label>Tell us about your self</label>
+        <textarea name="about" id="about" cols="10" rows="5"></textarea>
+        <br>
+
+        <input type="checkbox" name="permission" id="permit" /> <label for="permit">grant permission to contact me</label> 
+        <br>
+        <input type="submit" value="submit enquiry form">
+        <input type="reset">
+    </form>
+    <script>
+        var formHandle = document.getElementById('enquiryForm');
+        var nameHandle = document.getElementById('nameId');
+        var nameErrorHandle = document.getElementById('nameError');
+        var mobileHandle = document.getElementById('mob');
+        var mobileErrorHandle = document.querySelector('#mobileError');//refers to span tag [getElementById and query selector both are same ]
+
+        var hasErrors = {
+            name:true,
+            mobile:true
+        }
+
+        function validateName() {
+            if(nameHandle.value == '') {
+                nameErrorHandle.innerHTML = 'cannot be empty';
+                hasErrors.name = true;
+            } else{
+                nameErrorHandle.innerHTML = '';
+                hasErrors.name = false;
+            }
+        }
+
+        function validateMobile() {
+            if(mobileHandle.value === '') {
+                mobileErrorHandle.innerHTML = 'cannot be blank';
+                hasErrors.mobile = true;
+            } else if(mobileHandle.value.length !== 10) {
+                mobileErrorHandle.innerHTML = 'should be 10 digits';
+                hasErrors.mobile = true;
+            } else {
+                mobileErrorHandle.innerHTML = '';
+                hasErrors.mobile = false;
+            }
+        }
+
+        formHandle.addEventListener('submit', function(e) {
+            validateName();
+            validateMobile();
+
+            if(Object.values(hasErrors).includes(true)) {
+                e.preventDefault();
+            }
+        }, false);
+
+    </script>
+</body>
+</html>

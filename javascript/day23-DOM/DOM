@@ -1,0 +1,11 @@
+Document - the whole page
+Object - elements or pieces on the web page
+Model - agreed on set of terms used to interact with elements on page
+THAT ON YOU WHICH YOU INVESTMENT ON DAILY BASIS GROWS
+
+Important Nodes Types
+1. Element node - all tags in html-1
+2. Attribute node - all attributes of tag-2
+3. Text node - textual information of tags ie h1, p, li etc..-3
+<ul id='taskList'>: ul: Element node; id='tasklist':attribute node
+<li>milk</li> :li:Element node; milk:Text node

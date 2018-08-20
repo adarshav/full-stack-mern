@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GetLocation</title>
+</head>
+<body>
+    <h2>GetLocation</h2>
+
+    <button id="getlocation">Get My Location</button>
+    <p id="result"></p>
+    <div id="weather"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        //var btnHandle = document.getElementById('getlocation');
+        var key = "700b21162914f2b232bb8620fdc1ae08";
+        var resultHandle = document.getElementById('result');
+        var weatherHandle = document.getElementById('weather');
+        var btnHandle = document.getElementById('getlocation');
+        
+       
+        btnHandle.addEventListener('click', function() {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                latitude = position.coords.latitude;
+                console.log(latitude);
+                longitude = position.coords.longitude;
+                resultHandle.innerHTML = `Lattitude: ${latitude}
+                Longitude: ${longitude}`;
+                darksky(latitude, longitude);
+            })
+           
+        }, false);
+        
+
+        function darksky(latitude, longitude) {
+            console.log(latitude,longitude);
+            var url = `https://api.darksky.net/forecast/${key}/${latitude},${longitude}`;
+            axios.get(url)
+            .then(function(response) {
+                var weather = response.data;
+                console.log(weather);
+                weatherHandle.innerHTML = `${weather.timezone}`;
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+        }
+            //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+    </script>
+</body>
+</html>

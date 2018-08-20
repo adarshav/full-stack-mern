@@ -1,0 +1,11 @@
+var a = 122.021;
+console.log(Math.round(a));
+a = 123.67;
+console.log(Math.round(a));
+console.log(Math.pow(3, 3));
+var b = 2;
+var c = 3;
+console.log(Math.pow(b, c));
+console.log(Math.max(10, 2, 3, 6, 11));
+console.log(Math.min(10, 2, 3, 6, 11));
+console.log(Math.round(Math.random() * 100));

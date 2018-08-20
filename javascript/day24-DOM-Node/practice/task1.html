@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task1</title>
+</head>
+<body>
+    <h2>This is the representation of DOM javascript (practiced) By Adarsha </h2>
+    <h2>My Tasks</h2>
+    <ul id='myTasks'>
+    </ul>
+    <script>
+        var task1 = 'Bring the groceries';
+        var task2 = 'Go for a walk';
+        var task3 = 'watch a movie';
+        var task4 = 'kaalu haakodu';
+        var ulHandle = document.getElementById('myTasks');
+        var liFirst = document.createElement('li');
+        console.log(liFirst);
+        var liFirstText = document.createTextNode(task1);
+        console.log(liFirstText);
+        liFirst.appendChild(liFirstText);
+        ulHandle.appendChild(liFirst);
+
+
+        var liSecond = document.createElement('li');//<li></li>
+        var liSecondText = document.createTextNode(task2);//go for a walk
+        liSecond.appendChild(liSecondText);//<li>go for a walk</li>
+        ulHandle.appendChild(liSecond);//this is to insert below ul tag
+
+
+        var liThird = document.createElement('li');
+        var liThirdText = document.createTextNode(task3);
+        liThird.appendChild(liThirdText);
+        ulHandle.appendChild(liThird);
+
+        var liFourth = document.createElement('li');
+        var liFourthText = document.createTextNode(task4);
+        liFourth.appendChild(liFourthText);
+        ulHandle.appendChild(liFourth);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HashTagGenerator</title>
+</head>
+<body>
+    <h2>Hash Tag Generator</h2>
+
+    <label for="name">Name:</label><input type="text" name="name" id="name">
+    <br>
+    <button id="generate">Click me !!</button>
+    <br>
+    <h2 id="app"></h2>
+
+    <script>
+        var nameHandle = document.getElementById('name');
+        var btnHandle  = document.getElementById('generate');
+        var appHandle = document.getElementById('app');
+
+        btnHandle.addEventListener('click', function() {
+            let result = '#';
+            var userInput = nameHandle.value;
+            userInput.split(' ').forEach((value) => {
+                result = result + value[0].toUpperCase() + value.slice(1);
+            });
+            appHandle.innerHTML = result;
+        }, false);
+    </script>
+</body>
+</html>

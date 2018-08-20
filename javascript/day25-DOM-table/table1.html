@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>table1.html</title>
+</head>
+<body>
+    <h2>DOM Table</h2>
+    <div id='app'>
+
+    </div>
+    <script>
+         var links = [
+            {
+                title:'website',
+                url:'http://www.dctacademy.com'
+            },
+            {
+                title:'facebook',
+                url:'http://facebook.com'
+            },
+            {
+                title:'twitter',
+                url:'http://twitter.com'
+            }
+
+        ]; 
+        var appHandle = document.getElementById('app');
+        var table = document.createElement('table'); 
+        console.log(table);  
+        var thead = document.createElement('thead');
+        //console.log(thead);
+        var tbody = document.createElement('tbody');
+        //console.log(tbody);
+        table.setAttribute('border', 1);
+
+        //append the thead and tbody into <table> tag
+        table.appendChild(thead);
+        table.appendChild(tbody); 
+        
+        //for thead <tr> <th> </th></tr>
+        var tr = document.createElement('tr');
+        var th = document.createElement('th');
+        console.log(th);
+        var text1 = 'title';
+        var trText = document.createTextNode(text1);
+        th.appendChild(trText);
+        var th2 = document.createElement('th');
+        console.log(th2);
+        var text2 = 'url';
+        var trText2 = document.createTextNode(text2);
+        th2.appendChild(trText2);
+        tr.appendChild(th);
+        tr.appendChild(th2);
+        thead.appendChild(tr);
+
+        //tbody
+        for(var i = 0;i < links.length;i++) {
+            var row = document.createElement('tr');
+            tbody.appendChild(row);
+            var td = document.createElement('td');
+            var td2 = document.createElement('td');
+
+            var text3 = document.createTextNode(links[i].title);
+            var text4 = document.createTextNode(links[i].url);
+
+            td.appendChild(text3);
+            td2.appendChild(text4);
+
+            row.appendChild(td);
+            row.appendChild(td2);
+            tbody.appendChild(row);
+            var a = document.createElement('a');
+            a.setAttribute('href', links[i].url);
+            td2.appendChild(a);
+
+            row.appendChild(a);
+        }
+        appHandle.appendChild(table);
+        </script>
+</body>
+</html>

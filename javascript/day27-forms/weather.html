@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>weather</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h2>see the temperature in the given cities</h2>
+    <label>City</label>
+    <select id="city">
+        <option value=''>Select here</option>
+        <option value='bangalore'>Bangalore</option>
+        <option value='mangalore'>Mangalore</option>
+        <option value='mysore'>Mysore</option>
+        <option value="hubli">Hubli</option>
+    </select>
+    <h2 id='output'></h2>
+    <script>
+        var cityHandle= document.getElementById('city');
+        var outputHandle = document.getElementById('output');
+
+        cityHandle.addEventListener('change',function(){
+            console.log(`you have selected ${cityHandle.value}`);
+            var userInput = cityHandle.value;
+            var url = `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&appid=3ae18949940ecdb295e65ef1a2186a0f&units=metric`;
+            axios.get(url)
+            .then(function(response) {
+                outputHandle.innerHTML = response.data.main.temp;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+        },false);
+    </script>
+</body>
+</html>

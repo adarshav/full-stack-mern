@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Products</title>
+</head>
+<body>
+    <h2>Products list</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        
+        
+    axios.get('http://localhost:3000/products')
+    .then((response) => {
+    let products = response.data;
+    console.log(products);
+    products.forEach((product) => {
+        let tbodyHandle = document.getElementById('tbody');
+        var tr = document.createElement('tr');
+         tr.innerHTML = `
+         <td>${product.id}</td>
+         <td>${product.name}</td>
+         <td>${product.price}</td>`;
+         tbodyHandle.appendChild(tr);
+
+    });
+    })
+    .catch((error) => {
+    console.log(error);
+    })
+    </script>
+</body>
+</html>

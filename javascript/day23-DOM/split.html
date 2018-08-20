@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>split.html</title>
+    </head>
+    <body>
+        <h2 id='name'>js, ruby, node, python, php</h2>
+        <button id='nameBtn'>Click to split</button>
+        <h2 id='result'>Results appear here</h2>
+        <script>
+            var nameHandle = document.getElementById('name');
+            var splitValue = nameHandle.innerHTML.split(', ');
+            console.log(splitValue);
+            var nameBtnHandle = document.getElementById('nameBtn');
+            //console.log(nameBtnHandle.innerHTML);
+            var resultHandle = document.getElementById('result');
+            console.log(resultHandle.innerHTML);
+            nameBtnHandle.addEventListener('click', function() {
+                resultHandle.innerHTML = splitValue;
+            }, false);
+        </script>
+    </body>
+</html>

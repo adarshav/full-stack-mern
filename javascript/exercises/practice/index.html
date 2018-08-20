@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+</head>
+<body>
+    <h2>Listing-Users</h2><span id="count"></span>
+
+    <input type="text" placeholder="searchByName"id="search" name="search">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>UserName</th>
+                <th>address</th>
+                <th>website</th>
+                <th>company</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table><span id="show"></span>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var countHandle = document.getElementById('count');
+        var searchHandle = document.getElementById('search');
+        var tbodyHandle;
+        var showHandle = document.getElementById('show');
+
+        //it is used for displaying tables and respective data using axios
+        function buildRow(user) {
+            var tr = document.createElement('tr');
+                tr.innerHTML = `
+                <td>${user.id}</td>
+                <td>${user.name}</td>
+                <td>${user.username}</td>
+                <td>${user.address.street}, ${user.address.suite}</td>
+                <td>${user.website}</td>
+                <td>${user.company.name}</td>`;
+                tbodyHandle.appendChild(tr);
+        }
+        var users, showCount;
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then((response) => {
+             users = response.data;
+             tbodyHandle = document.getElementById('tbody');
+            countHandle.innerHTML = users.length;
+            showCount = users.length;
+            users.forEach((user) => {
+               buildRow(user);
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        searchHandle.addEventListener('keyup', function() {
+            tbodyHandle.innerHTML = '';
+            let result = users.filter((user) => {
+                return user.name.toLowerCase().indexOf(searchHandle.value.toLowerCase()) != -1
+            });
+            result.forEach((user) => {
+                buildRow(user);
+            });
+            countHandle.innerHTML = result.length;
+            showHandle.innerHTML = `showing results ${result.length} out of ${showCount}`;
+        }, false);
+    </script>
+</body>
+</html>

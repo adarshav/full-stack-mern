@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enquiry Form</title>
+</head>
+<body>
+    <h2>Enquiry Form</h2>
+    <form id="enquiryForm">
+        <!-- for attribute in label should be same as id in the input tag[it highlights the textbox when the respective label is clicked] -->
+        <label for="nameId">Name :</label>
+        <input type="text" name="name" id="nameId"/>
+        <br><br>
+
+        <label for="mob">Mobile :</label>
+        <input type="text" name="mobile" id="mob">
+        <br><br>
+
+        <label for="emailId">Email :</label>
+        <input type="text" name="email" id="emailId"/>
+        <br><br>
+
+        <label for="gender">Gender</label>
+        <input type="radio" name="gender" value="male" id="male"><label for="male">Male</label>
+        <input type="radio" name="gender"  value="female" id="female"><label for="female">Female</label>
+        <br>
+        
+        <label>Languages</label>
+        <select name="languages" id="languages">
+            <option value="">Select</option>
+            <option value="js">Javascript</option>
+            <option value="rb">Ruby</option>
+            <option value="py">Python</option>
+        </select>
+        <br><br>
+
+        <label>Courses</label>
+        <select name="courses" id="courses">
+            <option value="">Select</option>
+            <option value="mern">MERN</option>
+            <option value="react">React</option>
+            <option value="node">Node</option>
+            <option value="django">Python + Django</option>
+            <option value="ror">Ruby On Rails</option>
+        </select>
+        <br>
+
+        <label>Preference</label>
+        <input type="radio" name="preference" value="weekday" id="wd"><label for="wd">WeekDay</label>
+        <input type="radio" name="preference" value="weekend" id="we"><label for="we">WeekEnd</label>
+        <br>
+
+        <label>Experience</label>
+        <input type="number" name="experience" min="0" max="15">
+        <br>
+        <label>Tell us about your self</label>
+        <textarea name="about" id="about" cols="10" rows="5"></textarea>
+        <br>
+
+        <input type="checkbox" name="permission" id="permit" /> <label for="permit">grant permission to contact me</label> 
+        <br>
+        <input type="submit">
+        <input type="reset">
+    </form>
+    <script>
+        var nameHandle = document.getElementById('nameId');
+        var mobileHandle = document.getElementById('mob');
+        var emailHandle = document.getElementById('emailId');
+        var aboutHandle = document.getElementById('about');
+        var languageHandle = document.getElementById('languages');
+        var coursesHandle = document.getElementById('courses');
+        var  maleHandle = document.getElementById('male');
+        var femaleHandle = document.getElementById('female');
+        var weekdayHandle = document.getElementById('wd');
+        var weekendHandle = document.getElementById('we');
+
+        nameHandle.addEventListener('focus', function() {
+            console.log('inside text field');
+        }, false);
+
+        nameHandle.addEventListener('blur', function() {
+            console.log('you came out of the text field');
+            console.log(`you typed ${nameHandle.value}`);
+        }, false);
+
+        //mobile
+        mobileHandle.addEventListener('focus', function() {
+            console.log('now you are in mobile field');
+        }, false);
+        mobileHandle.addEventListener('blur', function() {
+            console.log(`you typed ${mobileHandle.value}`);
+        }, false);
+        
+        //email
+        emailHandle.addEventListener('focus', function() {
+            console.log('now you are in email text field');
+        }, false);
+        emailHandle.addEventListener('blur', function() {
+            console.log(`you typed ${emailHandle.value}`);
+        }, false);
+
+        //about
+        aboutHandle.addEventListener('focus', function() {
+            console.log('now you are in textArea(about) field');
+        }, false);
+        aboutHandle.addEventListener('blur', function() {
+            console.log(`you typed ${aboutHandle.value}`);
+        }, false);
+
+        //languages
+        languageHandle.addEventListener('change', function() {
+            console.log(`you selected ${languageHandle.value}`);
+        }, false);
+
+        //courses
+        coursesHandle.addEventListener('change', function() {
+            console.log(`you have selected ${coursesHandle.value}`);
+        }, false);
+
+        //male, female
+        maleHandle.addEventListener('click', function() {
+            console.log(`you have selected ${maleHandle.value}`);
+        }, false);
+        femaleHandle.addEventListener('click', function() {
+            console.log(`you have seleted ${femaleHandle.value}`);
+        }, false);
+
+        //weekend, weekend
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task-array-objects</title>
+</head>
+<body>
+    <h2>Demonstration of DOM In Javascript with tasks an arraya of objects</h2>
+    <h3>My Tasks</h3>
+    <ul id='myTasks'></ul>
+    <button id='btn'>Click Me to Display!!</button>
+    <script>
+        var ulHandle = document.getElementById('myTasks');
+        var btnHandle = document.getElementById('btn');
+        var tasks = [
+            {
+                title:'watch a movie',
+                dueDate:'2018-07-09'
+            },
+            {
+                title:'Go for Walk',
+                dueDate:'2018-07-08'
+            }
+        ];
+        btnHandle.addEventListener('click', function() {
+            tasks.forEach(function(task) {
+            var liFirst = document.createElement('li');
+            console.log(liFirst);
+            var liFirstText = document.createTextNode(`${task.title}, ${task.dueDate}`);
+            liFirst.appendChild(liFirstText);
+            ulHandle.appendChild(liFirst);   
+        });
+        }, false);
+        
+    </script>
+</body>
+</html>
