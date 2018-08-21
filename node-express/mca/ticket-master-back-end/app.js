@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { ObjectId } = require('mongodb');
+const _ = require('lodash');
+
 
 const mongoose = require('./config/db');
 const { Ticket } = require('./models/ticket');
@@ -52,7 +54,7 @@ app.get('/tickets', (req, res) => {
 
 //create
 app.post('/tickets', (req, res) => {
-    let body = req.body;
+    let body = _.pick(req.body, ['name', 'department', 'priority', 'message']);
     let ticket = new Ticket(body);
     ticket.save().then((ticket) => {
         res.send(ticket);
@@ -89,7 +91,7 @@ app.get('/tickets/:id', (req, res) => {
 //update
 app.put('/tickets/:id', (req, res) => {
     let id = req.params.id;
-    let body = req.body;
+    let body = _.pick(req.body, ['name', 'department', 'priority', 'message']);
 
     if(!ObjectId.isValid(id)) {
         res.send({
