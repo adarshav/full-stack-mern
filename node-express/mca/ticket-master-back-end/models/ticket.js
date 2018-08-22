@@ -28,4 +28,6 @@ const ticketSchema = new Schema({
 })
 
 const Ticket = mongoose.model('ticket', ticketSchema);
-module.exports = Ticket;
+module.exports = {
+    Ticket
+}
