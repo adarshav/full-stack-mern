@@ -4,7 +4,16 @@ const Schema = mongoose.Schema;
 const ticketSchema = new Schema({
     "name": {
         "type":String,
-        required:true
+        required:true,
+        validate:{
+            validators:function(value) {
+                nameFormat = /^[a-zA-Z ]*$/;
+                return nameFormat.test(value);
+            },
+            message:function(props) {
+                return 'Invalid name format'
+            }
+        }
     },
         "department":{
             "type":String,
@@ -26,6 +35,11 @@ const ticketSchema = new Schema({
         "default":'open'
     }
 })
+
+employeeSchema.statics.findByStatus = function(status) {
+    return this.find({status: status});
+}
+
 
 const Ticket = mongoose.model('ticket', ticketSchema);
 module.exports = {

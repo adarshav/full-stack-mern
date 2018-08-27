@@ -104,6 +104,15 @@ router.delete('/tickets/:id', (req, res) => {
         res.send(err);
     })
 });
+
+router.get('/status/:status', (req ,res) => {
+    let status = req.params.status;
+    Employee.findByPriority(priority).then((emp) => {
+        res.send(emp);
+    }).catch((err) => {
+        res.send(err);
+    })
+})
 module.exports = {
     router
 }

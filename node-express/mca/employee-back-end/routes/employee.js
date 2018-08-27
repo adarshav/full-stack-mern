@@ -9,7 +9,9 @@ const Employee = require('../models/employee');
 // this means /employees/
 router.get('/', (req ,res) => {
     Employee.find().then((emp) => {
+        //this is used to short list when we want all employees for refer[localhost:3000/employees]
         res.send(emp);
+        //res.send(emp.map(employee => employee.shortInfo()));
     }).catch((err) => {
         res.send(err);
     });
@@ -146,7 +148,7 @@ router.put('/:id/address/:address_id', (req ,res) => {
 });
 
 //deleting a particular address record for particular employee
-router.delete('/:id/address/address_id', (req, res) => {
+router.delete('/:id/address/:address_id', (req, res) => {
     let id = req.params.id;
     let addressId = req.params.address_id;
     Employee.findById(id)
@@ -170,11 +172,11 @@ router.post('/',(req, res) => {
     });
 })
 
-//
+//when we are updating the records we cannot make it, at that time we have 2 pass 3rd argument called 'runValidators'
 router.put('/:id', (req ,res) => {
     let body = req.body;
     let id = req.params.id;
-    Employee.findByIdAndUpdate(id, {$set:body}, {new:true})
+    Employee.findByIdAndUpdate(id, {$set:body}, {new:true, runValidators:true})
     .then((emp) => {
         res.send({
             emp,
@@ -202,9 +204,33 @@ router.post('/', (req, res) => {
     employee.save().then((emp) => {
         res.send(emp);
     })
-    .catch((err) => {
-        res.send(err);
+    .catch((err)=> {
     })
 });
+//defining mongoose class instance and methods, it is done when we want BIG
+router.get('/priority/:priority', (req, res) => {
+    let priority = req.params.priority;
+    Employee.findByPriority(priority).then((emp) => {
+        res.send(emp);
+    })
+})
 
+router.get('/status/:status', (req ,res) => {
+    let status = req.params.status;
+    Employee.findByPriority(priority).then((emp) => {
+        res.send(emp);
+    }).catch((err) => {
+        res.send(err);
+    })
+})
+
+//methods-it is used to find when we want to find SMALL
+router.get('/short_info/:id', (req ,res) => {
+    let id = req.params.id;
+    Employee.findById(id).then((emp) => {
+        res.send(emp.shortInfo());
+    }).catch((err) => {
+        res.send(err);
+    });
+});
 module.exports = router;
