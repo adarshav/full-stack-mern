@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 //create
 //this meaning is /tickets
 router.post('/', (req, res) => {
-    let body = _.pick(req.body, ['name', 'department', 'priority', 'message']);
+    let body = _.pick(req.body, ['name', 'department', 'priority', 'message', 'employee']);
     let ticket = new Ticket(body);
     ticket.save().then((ticket) => {
         res.send(ticket);
@@ -113,6 +113,17 @@ router.get('/status/:status', (req ,res) => {
         res.send(err);
     })
 })
+
+//
+router.get('/code/:code', (req, res) => {
+    let id = req.params.id;
+    Ticket.findOne(id)
+    .then((tic) => {
+        res.send(tic);
+    }).catch((err) => {
+        res.send(err);
+    });
+});
 module.exports = {
     router
 }

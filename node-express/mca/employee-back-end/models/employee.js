@@ -89,7 +89,10 @@ const employeeSchema = new Schema ({
                 required:true
             }
         }
-    ]
+    ],
+    "code":{
+        type:String
+    }
 })
 //defining static and instance methods in mongoose
 employeeSchema.statics.findByPriority = function(priority){
@@ -108,7 +111,9 @@ employeeSchema.methods.shortInfo = function() {
         email:this.email
     }
 }
-
+employeeSchema.pre('save', function() {
+    this.code = `DCT- ${this._id.toString().slice(12)}`;
+})
 const Employee = mongoose.model('employee', employeeSchema);
 
 module.exports = Employee;

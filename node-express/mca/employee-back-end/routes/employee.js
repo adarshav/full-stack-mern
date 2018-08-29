@@ -233,4 +233,14 @@ router.get('/short_info/:id', (req ,res) => {
         res.send(err);
     });
 });
+
+router.get('/code/:code', (req, res) => {
+    let id = req.params.id;
+    Employee.findOne({code:code})
+    .then((emp) => {
+        res.send(emp);
+    }).catch((err) => {
+        res.send(err);
+    });
+});
 module.exports = router;
