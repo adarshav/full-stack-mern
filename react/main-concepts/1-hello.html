@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script>
+        const rootHandle = document.getElementById('root');
+        const ele = React.createElement('h2', {id:'heading', style:{color:'blue'}}, 'Hello world')//DOM html alli 4lines alli bariyo code illi 1line alli barute [react 3 arguments tagolutte 1.yaav element antha 2.adara attributes na objeect alli pass maadodu 3.attribute na contents or children ]
+        ReactDOM.render(ele, rootHandle);//ReactDOM method - render [it is used instead of append child in DOM]render means balasu or koodisu in kannada
+        //BUT we can create only one element at a time in react (per page)
+
+
+    </script>
+</body>
+</html>

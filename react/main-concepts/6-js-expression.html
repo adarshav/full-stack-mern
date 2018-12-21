@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+        const source = 'bangalore';
+        const destination = 'mysore';
+        const kms = 150;
+        const places = ['kengeri', 'bidadi', 'ramnagar'];
+        const tolls = {
+            nice:65,
+            govt:50
+        }
+        const ele = <p> the distance between {source} and {destination} is {kms} kms ({places.join('-')}) ... the tolls  are {tolls.nice} .. {tolls.govt} </p>//this is JSX with js expressions
+//In placeholders if array value is placed, it appears in concatenated mode, it can b placed like the above code
+//react will not take objects[it shows the error] but it can do objects operation 
+        ReactDOM.render(ele, rootHandle);
+    </script>
+
+</body>
+</html>

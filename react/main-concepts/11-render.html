@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+        let count = 0;
+        let add5 = 0;
+        function handleClick() {
+            count++;
+            add5++;
+            ele = display()
+            ReactDOM.render(ele, rootHandle)
+        }
+
+        function display() {
+            return (
+                <div>
+                    <h1>counter App</h1>
+                    <h2>counting begins {count}</h2>
+                    <h2>Add5 {add5} </h2>
+                    <button onClick = {handleClick}>up</button>
+                 </div>
+            )
+        }
+        let ele = display();
+        ReactDOM.render(ele, rootHandle);
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+        const social = [{
+            id:1,
+            name:'facebook',
+            url:'www.facebook.com'
+        },
+        {
+            id:2,
+            name:'google',
+            url:'www.google.com'
+        }]
+        const ele = (
+            <table border= '1'>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>url</th>
+                    </tr>    
+                </thead>
+                <tbody>
+                    {social.map(function(link, index){
+                        return <tr key={index}><td>{link.id}</td>
+                                <td>{link.name}</td>
+                                <td><a href={link.url}>{link.url}</a></td></tr>
+                    })}
+                </tbody>
+            </table>
+        )
+        ReactDOM.render(ele, rootHandle);
+    </script>
+</body>
+</html>

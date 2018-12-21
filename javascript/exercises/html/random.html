@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id=btn>Random Number generation</button>
+    <h2 id=output></h2>
+    <script>
+        let outputHandle = document.getElementById('output');
+        let btnHandle = document.getElementById('btn');
+        
+        btnHandle.addEventListener('click', function() {
+            let randomNumber = Math.round(Math.random() *100);
+            outputHandle.innerHTML = randomNumber;
+        }, false);
+    </script>
+</body>
+</html>

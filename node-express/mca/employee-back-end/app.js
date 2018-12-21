@@ -4,6 +4,8 @@ const {ObjectId} = require('mongodb');
 //const _ = require('lodash');
 const app = express();
 
+const usersRouter = require('./routes/user');
+
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
@@ -26,6 +28,9 @@ app.get('/', (req, res) => {
 
 //mongo
 app.use('/employees',EmployeeRouter)
+
+
+app.use('/users', usersRouter);
 
 app.listen(port, () => {
     console.log("listening to the port", port);

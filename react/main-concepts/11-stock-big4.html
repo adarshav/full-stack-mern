@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+        let stock = {
+            apple:0,
+            microsoft:0,
+            google:0,
+            amazon:0
+        }
+
+        setInterval(() => {
+            function updateValue() {
+                stock.apple = Math.ceil(Math.random() *100)
+                stock.microsoft = Math.ceil(Math.random() *100)
+                stock.google = Math.ceil(Math.random() *100)
+                stock.amazon = Math.ceil(Math.random() *100)
+                
+                ele = display();
+                ReactDOM.render(ele, rootHandle);
+            }
+            updateValue();
+        }, 5000)
+
+        function display() {
+        return (
+            <table>
+                <thead>
+                        <tr>
+                            <th>Apple</th>
+                            <th>Microsoft</th>
+                            <th>Google</th>
+                            <th>Amazon</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{stock.apple}</td>
+                        <td>{stock.microsoft}</td>
+                        <td>{stock.google}</td>
+                        <td>{stock.amazon}</td>
+                    </tr>
+                </tbody>
+            </table>
+        )
+        }
+        
+
+        let ele = display();
+        ReactDOM.render(ele, rootHandle);
+        
+    </script>
+</body>
+</html>
