@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+
+        //functional components = presentational components
+        function Restaurant(props) {
+            return (
+                <div>
+                    <h2>{props.name}</h2>
+                    <p>{props.type}</p>
+                    <p>{props.rating}</p>
+                    <hr />
+                </div>
+            )
+        }
+
+        function App(props)//used to display multiple restaurants
+        {
+            const restaurants = [
+                {id:1, name:'hari', type:'fast food', rating:4.4},
+                {id:1, name:'hari', type:'fast food', rating:4.4}
+                ];
+            return (
+                <div>
+                    <h2>Swizzy</h2>
+                     <Restaurant name="MTR" type="sitting" rating="4.5" />
+                     <Restaurant name="CTR" type="sitting" rating="4.3" />
+                    {
+                        restaurants.map(function(restaurant){
+                            return <Restaurant key={restaurant.id} name={restaurant.name} type={restaurant.type} rating={restaurant.rating} />
+                        })
+                    }
+                </div>
+            )
+        }
+        ReactDOM.render(<App />, rootHandle);
+    </script>
+</body>
+</html>

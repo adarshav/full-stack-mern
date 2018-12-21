@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+
+        //components
+        //functional component
+        function Greeting(props) {//in functional components function name should always be in pascal case
+            //jsx maatra baribeku
+            const ele = <h2> Hello {props.name}-- {props.lastname} </h2>
+            return ele;
+        }
+        
+        //const middleName = "v";
+        ReactDOM.render(Greeting({name:'adarsha', lastname:'navada'}), rootHandle);
+//two methods can be used 
+        //ReactDOM.render(<Greeting name="adarsha" lastname="navada" />, rootHandle);
+    </script>
+</body>
+</html>
