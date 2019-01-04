@@ -14,44 +14,47 @@
     <script type="text/babel">
         const rootHandle = document.getElementById('root');
 
-        class Counter extends React.Component {
+        class Parent  extends React.Component {
             constructor() {
-                super()
+                super() 
+
                 this.state = {
                     value:0
                 }
-                this.handleClick = this.handleClick.bind(this);
             }
-            handleClick() {
-
-                this.setState(function(prevState) {
-                return {
-                    value:prevState.value - 1
-                    
-                }
-            })
-        }
             render() {
                 return (
                     <div>
-                        <h2>{this.state.value}</h2>
-                        <button onClick={this.handleClick + }>Down</button>
+                        <p>Count:{this.state.value}</p>         
                     </div>
                 )
             }
         }
 
-        function App() {
-            return (
-                <div>
-                    <Counter />
-                </div>
-            )
-        }
-        ReactDOM.render(<App />, rootHandle);
+        class Child extends React.Component {
+            constructor() {
+                super()
 
-        
-        
+                this.handleClick = this.handleClick.bind(this);
+            }
+            handleClick() {
+                this.setState(function(prevState) {
+                    return {
+                        value:prevState.value + 1
+                    }
+                })
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick = {this.handleClick}>Btn
+                        </button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Child />, rootHandle);
     </script>
 </body>
 </html>

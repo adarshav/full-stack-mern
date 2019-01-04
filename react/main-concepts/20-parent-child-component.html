@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+
+        class Parent extends React.Component {
+            constructor() {
+                super()
+
+                this.state = {
+                    children:['karna', 'krishna']
+                }
+            }
+            hug(name) {
+                console.log(`${name} hugged parent`)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h2>Parent component</h2>
+
+                        <Child name={this.state.children[0]} city="bangalore" hugMethod={this.hug} />
+                        <Child name={this.state.children[1]} city="bangalore" hugMethod={this.hug} />
+                    </div>
+                )
+            }
+        }
+
+        class Child extends React.Component {
+            constructor() {
+                super() 
+
+                this.handleClick = this.handleClick.bind(this)
+            }
+
+            handleClick() {
+                this.props.hugMethod(this.props.name)
+            }
+
+            render() {
+                <div>
+                    <h2>Child component</h2>
+                    <p>Name:{this.props.name} </p>
+                    <p>City:{this.props.city}</p>
+                    <button onClick={this.handleClick}>Hug parent</button>
+                </div>
+            }
+        }
+        ReactDOM.render(<Child />, rootHandle);
+    </script>
+</body>
+</html>

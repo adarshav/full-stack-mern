@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+
+        class Users extends React.Component {
+            constructor() {
+                super()
+                this.handleChange = this.handleChange.bind(this);
+                this.state = {
+                    users:[],
+                    filteredUsers:[],
+                    loading:true
+                }
+            }
+            componentDidMount() {//axios call should be done in componentDidMount
+                axios.get('http://jsonplaceholder.typicode.com/users').then(response => {
+                    this.setState ({
+                        users:response.data,
+                        filteredUsers:response.data,
+                        loading:false
+                    })
+                })
+            }
+
+            handleChange(event) {
+                console.log(event.target.value);
+                event.persist();
+                this.setState(prevState => ({
+                    filteredUsers:prevState.users.filter(user => user.name.toLowerCase()
+                    .indexOf(event.target.value.toLowerCase()) >= 0)
+                }))
+            }
+            render() {
+                return (
+                    <div>
+                        {
+                            this.state.loading
+                            ? <img src="./images/TameValuableCrocodile-size_restricted.gif" alt="spinner"/>
+                            :
+                            <div>
+                                 <input type="text" placeholder="search" onChange={this.handleChange} />   
+                                    <h2>Listing users -- {this.state.filteredUsers.length}</h2>
+                                <ul>
+                                    {this.state.filteredUsers.map(user => {
+                                    return <li key={user.id}> {user.name}</li>
+                                    }) }
+                                </ul>
+                            </div>
+                    
+                        }
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Users />, rootHandle);
+    </script>
+</body>
+</html>

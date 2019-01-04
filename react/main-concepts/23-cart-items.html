@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title></title>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const rootHandle = document.getElementById('root');
+//code na initial stage inda build maadbeku [step by step]
+        class Items extends React.Component {//parent class inda child class ge access beku andaaga props use maadbeku
+            constructor() {
+                super() 
+
+                this.state = {
+                    items:[
+                        {id:1, name:'marker', price:50, quantity:2},
+                        {id:2, name:'scale', price:25, quantity:1},
+                        {id:3, name:'whiteBoard', price:150, quantity:1}
+                    ]
+                }
+                this.handleRemove = this.handleRemove.bind(this)
+                this.subtotal = this.subtotal.bind(this);
+            }
+            handleRemove(id) {
+                this.setState((prevState) => {
+                    return {
+                        items:prevState.items.filter(item => item.id != id)
+                    }
+                })
+                
+            }
+
+            subtotal() {
+                console.log(this);
+            }   
+            render() {
+                return (
+                    <div>
+                        <h2>Listing items -- {this.state.items.length}</h2>
+                        <ul>
+                            {this.state.items.map((item) => {
+                                return <SingleItem key={item.id} id={item.id} name = {item.name} price = {item.price} quantity = {item.quantity}handleRemove = {this.handleRemove} />
+                            })}
+                        </ul>
+                        <h2>SubTotal --{this.subtotal}</h2>
+                    </div>
+                )
+            }
+        }
+
+        class SingleItem extends React.Component {
+            constructor() {
+                super()
+                this.handleClick = this.handleClick.bind(this);
+            }
+            handleClick() {
+                console.log('button', this.props.name)
+                this.props.handleRemove(this.props.id)
+            }
+            render() {
+                return (
+                    <div>
+                        <li>{this.props.name} INR: {this.props.price} QTY:{this.props.quantity} total: {this.props.price * this.props.quantity}||  <button onClick={this.handleClick}>Remove</button></li>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Items />, rootHandle);
+    </script>
+</body>
+</html>
