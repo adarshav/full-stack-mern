@@ -33,9 +33,9 @@ class Form extends React.Component {
         //console.log(formData);
     }
 
-    addNewTicket(formData) {
-        console.log(formData);
-    }
+    // addNewTicket(formData) {
+    //     console.log(formData);
+    // }
     // handleDisplay() {
     //     this.props.print('from form');
     // }
