@@ -153,22 +153,38 @@ Mark and john are trying to compare their BMI(Body Mass Index), which is calcula
     john and Mike both play basketball in different teams, in the latest 3 games, john's team scored 89, 120, 103 points while Mike's team scored 116, 94, 123 points.
     Calculate average score for  each team
     Decide which teams in average (highest average score) and print winner to consoleand include average score in the output and take draw into the account
-    Extra mary also plays the basketball with the points 97, 134, 105 points
+    Extra: mary also plays the basketball with the points 97, 134, 105 points
  */
-var johnGame1 = 89;
-var johnGame2 = 120;
-var johnGame3 = 103;
-var johnAverage = (johnGame1 + johnGame2 + johnGame3) / 3;
-var mikeGame1 = 116;
-var mikeGame2 = 94;
-var mikeGame3 = 123;
-var mikeAverage = (mikeGame1 + mikeGame2 + mikeGame3) / 3;
-if(johnAverage > mikeAverage) {
-    console.log('John is the winner' + 'with' + johnAverage);
-} else {
-    console.log('mike is the winner' + 'with' + mikeAverage);
+// var johnGame1 = 89;
+// var johnGame2 = 120;
+// var johnGame3 = 103;
+// var johnAverage = (johnGame1 + johnGame2 + johnGame3) / 3;
+// var mikeGame1 = 116;
+// var mikeGame2 = 94;
+// var mikeGame3 = 123;
+// var mikeAverage = (mikeGame1 + mikeGame2 + mikeGame3) / 3;
+// var maryGame1 = 97;
+// var maryGame2 = 134;
+// var maryGame3 = 105;
+// var maryAverage = (maryGame1 + maryGame2 + maryGame3) / 3;
+// if(johnAverage > mikeAverage && johnAverage > maryAverage) {
+//     console.log('John is the winner' + ' with an average of ' + johnAverage);
+// } else if(mikeAverage > johnAverage && mikeAverage > maryAverage) {
+//     console.log('mike is the winner' + ' with an average of ' + mikeAverage);
+// } else {
+//     console.log('Mary is winner with an average of ' + maryAverage);
+// }
 
+//FUNCTIONS
+//Function Declaration
+function whatDoYouDo(job, firstName) { 
+    return (firstName +' '+  job);
 }
+console.log(whatDoYouDo('teacher', 'Adarsha'));
 
+//Function Expression
+var whatDoYouDo = function(job, firstName) {
+    
+}
 
 
