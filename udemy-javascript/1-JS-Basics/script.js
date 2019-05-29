@@ -177,14 +177,24 @@ Mark and john are trying to compare their BMI(Body Mass Index), which is calcula
 
 //FUNCTIONS
 //Function Declaration
-function whatDoYouDo(job, firstName) { 
-    return (firstName +' '+  job);
-}
-console.log(whatDoYouDo('teacher', 'Adarsha'));
+// function whatDoYouDo(job, firstName) { 
+//     return (firstName +' '+  job);
+// }
+// console.log(whatDoYouDo('teacher', 'Adarsha'));
 
 //Function Expression
 var whatDoYouDo = function(job, firstName) {
-    
+    switch(job) {
+        case 'teacher':
+            return firstName + ' teaches kids how to code';
+        case 'driver':
+            return firstName + ' drives cars to the hell';
+        case 'developer':
+            return firstName + ' writes the code';
+        default:
+            return firstName + ' does something else';
+    }
 }
+console.log(whatDoYouDo('developer', 'adarsha'));
 
 
