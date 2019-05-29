@@ -183,18 +183,77 @@ Mark and john are trying to compare their BMI(Body Mass Index), which is calcula
 // console.log(whatDoYouDo('teacher', 'Adarsha'));
 
 //Function Expression
-var whatDoYouDo = function(job, firstName) {
-    switch(job) {
-        case 'teacher':
-            return firstName + ' teaches kids how to code';
-        case 'driver':
-            return firstName + ' drives cars to the hell';
-        case 'developer':
-            return firstName + ' writes the code';
-        default:
-            return firstName + ' does something else';
-    }
-}
-console.log(whatDoYouDo('developer', 'adarsha'));
+// var whatDoYouDo = function(job, firstName) {
+//     switch(job) {
+//         case 'teacher':
+//             return firstName + ' teaches kids how to code';
+//         case 'driver':
+//             return firstName + ' drives cars to the hell';
+//         case 'developer':
+//             return firstName + ' writes the code';
+//         default:
+//             return firstName + ' does something else';
+//     }
+// }
+// console.log(whatDoYouDo('developer', 'adarsha'));
+
+//*********************************** */
+//Arrays
+//Arrays are basically zero sized and it can hold all types of variables or types
+// var family = ['Ganesha', 'Shantha', 'Raksha', 'Adarsha', 'Deeksha'];
+// var years = new Array(1990, 1991, 1996, 2000, 1996);
+// console.log(family[0]);
+// console.log(years);
+// //Array values can be mutated[changed] 
+// // family[0] = "V. Ganesh Navada";
+// console.log('------------');
+// //console.log(family);
+// family[family.length] = 'Shakti';
+// // console.log(family);
+// family.pop(); // removes the last element
+// family.push('Shakti');//inserts the element at the last position
+// console.log('the members of happy family are ' + family);
+// family.unshift('Mr.');//it adds the element at the first or starting position
+// console.log(family)
+// //the other two methods to remove the elements are pop(): removes the last element, shift():removes the element from the starting position
+// console.log(family.indexOf('Deeksha'));//it returns the position of the element if that particular element is present in the array, if the element is not present in the array it retruns -1
+// var position = family.indexOf('Adarsha');
+// console.log(typeof(position));//the return typeof indeOf() method is number
+// var isMarried = family.indexOf('Deeksha') === -1 ? 'Adarsha is NOT Married':'Adarsha is Married';
+// console.log(isMarried);
+
+//******************************************************************* */
 
 
+//CODING CHALLENGE
+
+/*
+    john and his family went on a holiday and went to 3 different restaurants and bills were $124, $48, $268.
+
+    To tip the fair amount to waiter, john created simple tip calculater (function) , he likes to tip 20% of the bill if the bill is less than $50,
+    15% if the bill is between $50 and $200, 10% if the bill is more than $200.
+
+    In the end john would like to have 2 arrays
+    1.Containing all three tips
+    2.Containing all three finally paid total bills (tip + bill)
+ */
+
+ function tipCalculator(bill) {
+     var percentage;
+     if(bill < 50) {
+         percentage = 0.2;
+     } else if(bill >= 50 && bill < 200) {
+         percentage = 0.15;
+     } else {
+         percentage = 0.1;
+     }
+     return percentage * bill;
+ }
+ var bills = [124, 48, 268]; 
+ var tips = [Math.floor(tipCalculator(bills[0])), Math.floor(tipCalculator(bills[1])), Math.floor(tipCalculator(bills[2]))];
+
+ var totalBill = [bills[0] + tips[0], 
+                    bills[1] + tips[1],
+                bills[2] + tips[2]];
+ console.log(tips, totalBill);
+//  console.log(tipCalculator(100));
