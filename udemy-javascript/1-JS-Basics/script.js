@@ -238,22 +238,32 @@ Mark and john are trying to compare their BMI(Body Mass Index), which is calcula
     2.Containing all three finally paid total bills (tip + bill)
  */
 
- function tipCalculator(bill) {
-     var percentage;
-     if(bill < 50) {
-         percentage = 0.2;
-     } else if(bill >= 50 && bill < 200) {
-         percentage = 0.15;
-     } else {
-         percentage = 0.1;
-     }
-     return percentage * bill;
- }
- var bills = [124, 48, 268]; 
- var tips = [Math.floor(tipCalculator(bills[0])), Math.floor(tipCalculator(bills[1])), Math.floor(tipCalculator(bills[2]))];
+//  function tipCalculator(bill) {
+//      var percentage;
+//      if(bill < 50) {
+//          percentage = 0.2;
+//      } else if(bill >= 50 && bill < 200) {
+//          percentage = 0.15;
+//      } else {
+//          percentage = 0.1;
+//      }
+//      return percentage * bill;
+//  }
+//  var bills = [124, 48, 268]; 
+//  var tips = [Math.floor(tipCalculator(bills[0])), Math.floor(tipCalculator(bills[1])), Math.floor(tipCalculator(bills[2]))];
 
- var totalBill = [bills[0] + tips[0], 
-                    bills[1] + tips[1],
-                bills[2] + tips[2]];
- console.log(tips, totalBill);
+//  var totalBill = [bills[0] + tips[0], 
+//                     bills[1] + tips[1],
+//                 bills[2] + tips[2]];
+//  console.log(tips, totalBill);
 //  console.log(tipCalculator(100));
+
+//******************* */
+//OBJECTS
+var adarsha = {
+    firstName:'Adarsha',
+    lastName:'V',
+    skills:['javascript', 'nodejs', 'reactjs', 'react-native'],
+    job:'full-stack-web developer'
+}
+console.log(adarsha);
