@@ -260,10 +260,105 @@ Mark and john are trying to compare their BMI(Body Mass Index), which is calcula
 
 //******************* */
 //OBJECTS
-var adarsha = {
-    firstName:'Adarsha',
-    lastName:'V',
-    skills:['javascript', 'nodejs', 'reactjs', 'react-native'],
-    job:'full-stack-web developer'
+// var adarsha = {
+//     firstName:'Adarsha',
+//     lastName:'V',
+//     skills:['javascript', 'nodejs', 'reactjs', 'react-native'],
+//     job:'full-stack-web developer'
+// }
+// console.log(adarsha);
+// console.log(adarsha.job);
+// console.log('---------------------------');
+// console.log(adarsha['skills']);//when we are accesing properties in objects like the above we have to mention it in Single inverted commas
+
+//the properties in object are aloso subject to mutable
+// adarsha.job = 'senior web-developer';
+// adarsha['isMarried'] = 'false';
+// console.log(adarsha);
+
+//new object syntax
+// var adarsha = new Object();
+// adarsha.firstName = 'Adarsha';
+// adarsha.lastName = 'V';
+// adarsha['skills'] = ['javascript', 'nodejs', 'reactjs', 'react-native'];
+// adarsha.isMarried = false;
+// console.log(adarsha);
+
+// var adarsha = {
+//     firstName:'Adarsha',
+//     birthYear:1996,
+//     skills:['javascript', 'nodejs', 'reactjs', 'express'],
+//     isMarried:false,
+//     calcAge:function(birthYear) {
+//         return 2019 - birthYear
+//     },//this is function expression and it is a method
+//     calculateAge:function() {
+//         return 2019 - this.birthYear;
+//     }//this is an illustration of THIS, instead of writing another parameter just use THIS and THIS refers to the current object 
+// };
+
+// // console.log(adarsha.calcAge(1996));
+// console.log(adarsha.calculateAge());
+
+// var adarsha = {
+//     firstName:'Adarsha',
+//     birthYear:1996,
+//     skills:['javascript', 'nodejs', 'reactjs', 'express'],
+//     isMarried:false,
+//     calcAge:function() {
+//         this.age = 2019 - this.birthYear
+//     }//if i want to save it in the same object i can do like this
+// }
+// adarsha.calcAge();
+// console.log(adarsha);
+//what is method?
+//properties with function is known as method
+
+//********************************************************** */
+//CODING CHALLENGE
+
+/* 
+    for both john and mark create objects with properties fullName, mass and height and then add a method toeach object to calculate BMI and save BMI and return from the method
+    In the end console who has the highest BMI, together with the fullName and respective BMI's dont forget they may have the same BMI
+    BMI = mass / (height * height);
+*/
+// var john = {
+//     fullName:'John',
+//     mass:40,
+//     height:1.95,
+//     calculateBMI:function() {
+//         this.BMI = this.mass / (this.height * this.height);
+//         return this.BMI;
+//     }
+// }
+// var mark = {
+//     fullName:'Mark',
+//     mass:27,
+//     height:1.67,
+//     calculateBMI:function() {
+//         this.BMI = this.mass / (this.height * this.height);
+//         return this.BMI;
+//     }
+// }
+
+// if(john.calculateBMI() > mark.calculateBMI()) {
+//     console.log(john['fullName'] + ' BMI is higher than ' + mark['fullName'] + 'with Body Mass Index ' + john['BMI']);
+//  } else if(mark.BMI > john.BMI) {
+//     console.log(mark.fullName + 'BMI is higher than ' + john.fullName + 'with Body Mass Index is' + mark.BMI);
+//  } else {
+//     console.log('both john and mark body mass index is same');
+
+//  }
+
+//********************************************************* */
+
+//LOOPS AND ITERAATIONS
+
+var skills = ['javascript', 'nodejs', 'mongodb', 'express', 'react', 'react-native'];
+// for(var i = 0; i < skills.length; i++) {
+//     console.log(skills[i]);
+// }
+//backward looping
+for(var i = skills.length-1;i >= 0; i--) {
+    console.log(skills[i]);
 }
-console.log(adarsha);
