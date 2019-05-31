@@ -352,13 +352,93 @@ Mark and john are trying to compare their BMI(Body Mass Index), which is calcula
 
 //********************************************************* */
 
-//LOOPS AND ITERAATIONS
+//LOOPS AND ITERATIONS
 
-var skills = ['javascript', 'nodejs', 'mongodb', 'express', 'react', 'react-native'];
-// for(var i = 0; i < skills.length; i++) {
+// var skills = ['javascript', 'nodejs', 'mongodb', 'express', 'react', 'react-native'];
+// // for(var i = 0; i < skills.length; i++) {
+// //     console.log(skills[i]);
+// // }
+// //backward looping
+// for(var i = skills.length-1;i >= 0; i--) {
 //     console.log(skills[i]);
 // }
-//backward looping
-for(var i = skills.length-1;i >= 0; i--) {
-    console.log(skills[i]);
+
+//CODING CHALLENGE
+
+/*
+    Adavnced version of the tip calculator
+    this time john and his family went to 5 different restaurants, the bills were 124, 48, 268, 180 and 42.
+    john likes to tip 20% of the bill if the bill is less than $50, 15% if the bill is between $50 and $200 and 10 % of the bill if it is more than $200.
+
+    Implement a tip calculator using objects and loops
+    1. Create an object with array for the bill values
+    2. Add a method to calculate the tip
+    3. this method should include a loop to iterate over all the paid bills and do the tip calculations
+    4. As an ouptput create 1) A new  array containging all tips and 2)An array containing all final paid amount (bill + tip), HINT: start with 2 empty arrays as properties and fill up them in the loop
+ */
+
+var john = {
+    fullName:'John Raj',
+    bills:[124, 48, 268, 180, 42],
+    calculateTip:function() {
+        // var percentage;
+        this.tips = new Array();
+        this.total = new Array();
+        for(var i = 0;i < this.bills.length;i++) {
+            // for(var j = 0;j <= this.tips.length;j++) {
+                if(this.bills[i] < 50) {
+                    this.tips.push(Math.floor(0.2 * this.bills[i]));
+                    // this.total.push(this.tips[j] + this.bills[i]);
+                } else if(this.bills[i] >= 50 && this.bills[i] < 200) {
+                    this.tips.push(Math.floor(0.15 * this.bills[i]));
+                    // this.total.push(this.tips[j] + this.bills[i]);
+                } else {
+                    this.tips.push(0.1 * this.bills[i]);
+                    // this.total.push(this.tips[j] + this.bills[i]);
+                }
+            // }
+            this.total[i] = this.tips[i] + this.bills[i];
+        // return this.tips;
+    }
 }
+}
+john.calculateTip();
+console.log(john);
+
+//CODING CHALLEENGE-PART-B
+/*
+    Above functionalities is same but now its for mark and 4 different restaurant bills are 77, 375, 110 and 45.
+    mark likes to tip 20% of the bill if the bill is less than 100, 10% when the bill is between 100 and 300 and 25% if the bill is more than 300 (different from john).
+    Create a function (not method) to calculate the average of given array of tips HINT:loop over the array items and in each iteratio store the store the current sum in a variable (starting from 0), After you have the sum of the array divide it by number of elements in it
+    Calculate the average tip for each of the family 
+    log onto the console which family paid the highest tips on average
+ */
+var mark = {
+    fullName:'Mark Twain',
+    bills:[77, 375, 110, 45],
+    calculateTip:function() {
+        this.tips = new Array();
+        for(var i = 0;i < this.bills.length;i++) {
+            if(this.bills[i] < 100) {
+                this.tips.push(0.2 * this.bills[i]);
+            } else if(this.bills[i] >= 100 && this.bills[i] < 300) {
+                this.tips.push(0.1 * this.bills[i]);
+            } else {
+                this.tips.push(0.25 * this.bills[i]);
+            }
+        }
+    }
+}
+mark.calculateTip();
+console.log(mark);
+
+function averageTip() {
+    var sum = 0, average;
+    for(var i = 0;i < mark.tips.length;i++) {
+        // console.log(mark.tips[i]);
+        sum = sum + mark.tips[i];
+    }
+    average = sum / mark.tips.length;
+    return average ;
+}
+console.log(averageTip());
