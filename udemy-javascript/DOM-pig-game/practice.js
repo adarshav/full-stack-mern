@@ -6,18 +6,9 @@ GAME RULES:
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
 */
-var scores, roundScore, activePlayer, dice, gamePlaying;
-scores = [0, 0];
-roundScore = 0;
-activePlayer = 0;//0 for the first player, 1 for the second player
-gamePlaying = true;
-//By default when the web page is been loaded default value should be 0 in all aspects
-document.querySelector('#score-0').textContent = '0';
-document.querySelector('#current-0').textContent = '0';
-document.querySelector('#score-1').textContent = '0';
-document.querySelector('#current-1').textContent = '0';
-//the image of the dice should not be visible
-document.querySelector('.dice').style.display = 'none';
+var scores, roundScore, activePlayer, dice, gamePlaying, lastDice;
+
+init();
 
 //ROLL DICE 
 document.querySelector('.btn-roll').addEventListener('click', function() {
@@ -32,13 +23,18 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     document.querySelector('.dice').src = 'dice-' + dice + '.png';//type coercion
 
     //3.Check if the player rolls 1
-    if(dice !== 1) {
+    if(dice === 6 && lastDice === 6) {
+        scores[activePlayer] = 0;
+        document.querySelector('#score-' + activePlayer).textContent = '0';
+        nextPlayer();
+    } else if(dice !== 1) {
         roundScore = roundScore + dice;
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
     }else {
         //Next Player
         nextPlayer();
     }
+    lastDice = dice;
 }
     
 });
@@ -51,8 +47,18 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     //2. Reflect it in UI
     document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
     document.querySelector('#current-' + activePlayer).textContent = '0';
+    
+
+    var input = document.querySelector('.final-score').value;
+    var winningScore;
+    //setting the user input
+    if(input) {
+         winningScore = input;
+    } else {
+        winningScore = 100;
+    }
     //3.Check whether the player has won or not
-    if(scores[activePlayer] >= 20) {
+    if(scores[activePlayer] >= winningScore) {
         document.querySelector('#name-' + activePlayer).textContent = 'WINNER!!';
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add = 'winner';
@@ -61,10 +67,38 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     } else {
         nextPlayer();
     }
-}
-    
+}    
 })
 
+document.querySelector('.btn-new').addEventListener('click', init);
+
+function init() {
+    scores = [0, 0];
+    roundScore = 0;
+    activePlayer = 0;//0 for the first player, 1 for the second player
+    gamePlaying = true;
+
+
+    //By default when the web page is been loaded default value should be 0 in all aspects
+    document.querySelector('#score-0').textContent = '0';
+    document.querySelector('#current-0').textContent = '0';
+    document.querySelector('#score-1').textContent = '0';
+    document.querySelector('#current-1').textContent = '0';
+    //the image of the dice should not be visible
+    document.querySelector('.dice').style.display = 'none';
+
+    document.querySelector('#name-0').textContent = 'Player1';
+    document.querySelector('#name-1').textContent = 'Player1';
+
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.add('active');
+
+
+
+}
 function nextPlayer() {
     activePlayer === 0 ? activePlayer = 1: activePlayer = 0;
     roundScore = 0;
@@ -77,3 +111,4 @@ function nextPlayer() {
 
     document.querySelector('.dice').style.display = 'none';
 }
+
