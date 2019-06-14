@@ -442,3 +442,12 @@ function averageTip() {
     return average ;
 }
 console.log(averageTip());
+
+//HOW JAVASCRIPT WORKS AND HOW OUR CODE GETS EXECUTED
+
+/*
+    There will be an javascript engine in every modern browser For Ex: Google Chrome has V8 engine for javascript.
+    This javascript engine will be having 
+    1) PARSER which checks for syntax errors in the code if there is an syntax error it raise the objection or in other words throws an error,if it passes every bar.
+    2) There will be a data structure called Abstract Syntax Tree which converts the natural language code into machine Code for the understanding of computer, which can be directly  executed by the computer's processor AND the code runs...
+ */
