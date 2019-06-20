@@ -43,19 +43,19 @@ console.log(parrot.isLand);
 */
 
 //Another method instead of function constructor
-var personProto = {
-    calculateAge:function() {
-        console.log(2019-this.yearOfBirth);
-    }
-}
+// var personProto = {
+//     calculateAge:function() {
+//         console.log(2019-this.yearOfBirth);
+//     }
+// }
 
-var deepika = Object.create(personProto);
-deepika.name = 'Deeksha';
-deepika.lastName = 'DV';
-deepika.yearOfBirth = 1996;
-deepika.job = 'software developer';
-console.log(deepika);
-deepika.calculateAge();
+// var deepika = Object.create(personProto);
+// deepika.name = 'Deeksha';
+// deepika.lastName = 'DV';
+// deepika.yearOfBirth = 1996;
+// deepika.job = 'software developer';
+// console.log(deepika);
+// deepika.calculateAge();
 
 var shantha = Object.create(personProto, {
         name: {value: 'Shantha'},
