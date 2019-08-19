@@ -6,7 +6,7 @@ fs.writeFileSync('notes.txt', "This is Text file created by nodejs");
 //it takes two parameters one name of the file, other is content of the file 
 
 //Challenge: Append a msg to notes.txt
-
+ 
 fs.appendFileSync('notes.txt', "   Iam Appending");
 
 //Knowing to import our own files
