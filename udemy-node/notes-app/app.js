@@ -114,6 +114,7 @@ yargs.command({
             type:String
         }
     }, 
+    //argv is passed as parameter for function 
     handler:function(argv) {
         console.log("Body: " + argv.body);
     }
