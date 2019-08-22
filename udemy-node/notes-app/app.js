@@ -3,7 +3,7 @@
 // const adding = require('./notes.js');
 //whatever u give the variable name it should be relevant 
 
-const gettingNotes = require('./notes');
+const notes = require('./notes');//it is an object which contains two properties
 const fs = require('fs');//loading the module in nodejs
 //fs is not defined if u write as it is because filesysytem in nodejs is a module and it is not imported or required in this file or folder
 fs.writeFileSync('notes.txt', "This is Text file created by nodejs");
@@ -78,23 +78,23 @@ const yargs = require('yargs');
 yargs.command({
     command:'add',
     describe:'Adds the note',
-    handler:function() {
-        console.log('Adding a note');
+    handler:function(argv) {//to add the notes
+        notes.addNotes(argv.title, argv.body)
     }
 })
-
+//Removing a note
 yargs.command({
     command:'remove',
     describe:'removes',
     builder:{
         title:{
-            describe:'Adding note', 
+            describe:'removing note', 
             demandOption:true,
             type:String
         }
     },
     handler:function(argv) {
-        console.log('Title: ' + argv.title);
+        notes.removeNotes(argv.title);
     }
 })
 
