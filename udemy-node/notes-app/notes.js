@@ -59,7 +59,7 @@ const removeNotes = function(title) {
     })
 
 
-    saveNotes(notesToKeep);
+    saveNotes(notesToKeep); 
 }
 module.exports = {
     getNotes:getNotes,
