@@ -143,3 +143,12 @@ console.log(yargs.argv);
 //command tells us to add which is the command need to be done
 //describe is optional but its a good practice to write about it , what are you doing
 //handler it tells what should be done the function of the command
+
+//Debugging Nodejs file
+//basic step is to console.log() the file or variable 
+
+//another method is:
+/*Add debugger where we have doubt in the execution
+then type node inspect app.js add --title="aavarana"
+then program debugs line by line
+*/
