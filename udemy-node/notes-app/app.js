@@ -78,7 +78,8 @@ const yargs = require('yargs');
 yargs.command({
     command:'add',
     describe:'Adds the note',
-    handler:function(argv) {//to add the notes
+    //changing the syntax that is refactoring the code into ES6 arrow function
+    handler:(argv) => {//to add the notes
         notes.addNotes(argv.title, argv.body)
     }
 })
@@ -105,18 +106,34 @@ yargs.command({
     command:'List',
     describe:'lists up',
     builder:{
-        body:{
+        title:{
             //optional
             describe:'listing',
             //it shows error when body is not mentioned in cli
-            demandOption:true,
+            // demandOption:true,
             //v are enforcing dat it should b in string
             type:String
         }
     }, 
     //argv is passed as parameter for function 
     handler:function(argv) {
-        console.log("Body: " + argv.body);
+        notes.listNotes(argv.title);
+    }
+})
+
+//reading a note
+yargs.command({
+    command:'read',
+    describe:'reads',
+    builder:{
+        title:{
+            describe:'reading...',
+            demandOption:true,
+            type:String
+        }
+    },
+    handler:(argv) => {
+        notes.readNotes(argv.title);
     }
 })
 //it should be at the bottom 

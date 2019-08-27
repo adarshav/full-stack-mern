@@ -1,4 +1,6 @@
 const fs = require('fs');
+const chalk = require('chalk');
+
 // console.log("iam notes.js")
 // const add = function(a, b) {
 //     return a + b
@@ -11,11 +13,14 @@ const getNotes = function() {
 }
 
 //Adding a notes
-const addNotes = function(title, body) {
+//refactoring the code into ES6 arrow function 
+
+// const addNotes = function(title, body) {
+const addNotes = (title, body) => {
     const notes = loadNotes();
 
     //to avoid duplication of titles
-    const duplicateNotes = notes.filter(function(note) {
+    const duplicateNotes = notes.filter((note) =>{
         return note.title === title
     })
 
@@ -58,11 +63,38 @@ const removeNotes = function(title) {
         return note.title !== title;
     })
 
+    // to get msg that delted or not using chalk npm package
+    if(notes.length > notesToKeep.length) {
+        console.log(chalk.green.inverse('Notes deleted'));
+         saveNotes(notesToKeep); 
+    }else {
+        console.log(chalk.red.inverse('Not deleted'));
+    }
 
-    saveNotes(notesToKeep); 
+}
+
+//listing notes
+const listNotes = (title) => {
+    console.log("ur notes");
+
+    const notes = loadNotes();
+    notes.forEach((note) => {
+        console.log(note.title);
+    })    
+}
+
+//Reading a note
+const readNotes = (title) => {
+    const notes = loadNotes();
+    const findNote = notes.find((note) => {
+        return note.title === title
+    })
+    console.log(findNote);
 }
 module.exports = {
     getNotes:getNotes,
     addNotes:addNotes ,
-    removeNotes:removeNotes
+    removeNotes:removeNotes,
+    listNotes:listNotes,
+    readNotes:readNotes
 }
