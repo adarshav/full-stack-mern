@@ -25,3 +25,10 @@ request({url: url, json:true}, (error, response) => {
     let percipitate = response.body.currently.precipProbability;
     console.log(` ${response.body.daily.data[0].summary} it is currently ${temperature} out and there are ${percipitate}% chances of rain`);
 })
+
+//geocoding
+const geoCodeUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/india.json?access_token=pk.eyJ1IjoiYWRhcnNoYXYiLCJhIjoiY2p6dHlleGphMDlxMjNvcWl2YWJ3dWZ0YyJ9.DNx_0PCh0NtGNQfRTj5K1A';
+
+request({url: geoCodeUrl, json:true}, (error, response) => {
+    
+})
