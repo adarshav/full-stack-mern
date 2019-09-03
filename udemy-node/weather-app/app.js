@@ -34,6 +34,8 @@ const request = require('request');
 // })
 
 //geocoding
+const geoCode = require('./utils/geocode');
+const foreCast = require('./utils/forecast');
 const geoCodeUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/bengaluru.json?access_token=pk.eyJ1IjoiYWRhcnNoYXYiLCJhIjoiY2p6dHlleGphMDlxMjNvcWl2YWJ3dWZ0YyJ9.DNx_0PCh0NtGNQfRTj5K1A';
 
 request({url: geoCodeUrl, json:true}, (error, response) => {
@@ -47,4 +49,14 @@ request({url: geoCodeUrl, json:true}, (error, response) => {
         console.log(`longitudde is ${longitude} lattitude is ${lattitude}`)
     }
     
+})
+
+geoCode('Udupi', (error, data) => {
+    // console.log('Error', error)
+    console.log('Data', data)
+})
+
+foreCast(-75.7088, 44.1545, (error, data) => {
+    console.log('Error', error)
+    console.log('Data', data)
 })
